@@ -1,0 +1,156 @@
+	<!DOCTYPE html>
+	<html lang="zh-CN">
+	  <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="./src/resource/img/favicon.ico">
+
+	    <title>餐饮资讯平台</title>
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- Custom styles for this template -->
+	    <link href="./index.css" rel="stylesheet">
+	  </head>
+
+	  <body>
+<div id="app">
+
+	    <nav class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container-fluid">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="./index1.html"><span class="youjian">友荐</span>&nbsp;&nbsp;|&nbsp;&nbsp;餐饮资讯平台</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav navbar-right">
+	            <li><a href="#" style="color: #337dbb;">产品列表</a></li>
+	            <li><a href="./evaluating.html">专题评测</a></li>
+	            <li><a href="./service.html">咨询服务</a></li>
+	          </ul>
+	          <form class="navbar-form navbar-right">
+	            <input v-model="searchCondition.searchKey" id="key" type="text" class="form-control" placeholder="请输入关键字...">
+	          </form>
+	        </div>
+	      </div>
+	    </nav>
+
+	    <div class="container-fluid">
+	      <div class="row">
+	      	<!-- 左边筛选条件区 -->
+	        <div class="col-sm-3 col-md-2 sidebar">
+		        <div class="nav-sidebar__item" @click="toggleShow('labelsShow')">
+		        	<span>标签</span>
+		        	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		        </div>
+		        <div class="nav nav-sidebar" v-if="labelsShow">
+			        	<span style="display: inline-block;margin: 2px 5px;" class="label label-primary" v-for="row in searchCondition.labels">
+			        		{{row.name}}
+			        	</span>
+		        </div>
+
+		        <div class="nav-sidebar__item" @click="toggleShow('typesShow')">
+		        	<span>覆盖业态</span>
+		        	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		        </div>
+		        <div class="nav nav-sidebar" v-if="typesShow">
+		        	<ul class="list-group">
+					  <li class="list-group-item" v-for="(row,index) in searchCondition.types">
+					  	<input type="checkbox" aria-label="..." :id="'types'+index" :value="row.value" v-model="row.checked">
+					  	<label :for="'types'+index">{{row.name}}</label>
+					  </li>
+					</ul>
+		        </div>
+
+		        <div class="nav-sidebar__item" @click="toggleShow('modelsShow')">
+		        	<span>产品模块</span>
+		        	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		        </div>
+		        <div class="nav nav-sidebar" v-if="modelsShow">
+		        	<ul class="list-group">
+					  <li class="list-group-item" v-for="(row,index) in searchCondition.models">
+					  	<input type="checkbox" aria-label="..." :id="'models'+index" :value="row.value" v-model="row.checked">
+					  	<label :for="'models'+index">{{row.name}}</label>
+					  </li>
+					</ul>
+		        </div>
+
+		        <div class="nav-sidebar__item" @click="toggleShow('pricesShow')">
+		        	<span>价格</span>
+		        	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		        </div>
+		        <div class="nav nav-sidebar" v-if="pricesShow">
+		        	<ul class="list-group">
+					  <li class="list-group-item" v-for="(row,index) in searchCondition.prices">
+					  	<input type="checkbox" aria-label="..." :id="'prices'+index" :value="row.value" v-model="row.checked">
+					  	<label :for="'prices'+index">{{row.name}}</label>
+					  </li>
+					</ul>
+		        </div>
+
+		        <div class="nav-sidebar__item" @click="toggleShow('areaShow')">
+		        	<span>售卖服务地区</span>
+		        	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		        </div>
+		        <div class="nav nav-sidebar" v-if="areaShow">
+		        	<ul class="list-group">
+					  <li class="list-group-item" v-for="(row,index) in searchCondition.areas">
+					  	<input type="checkbox" aria-label="..." :id="'areas'+index" :value="row.value" v-model="row.checked">
+					  	<label :for="'areas'+index">{{row.name}}</label>
+					  </li>
+					</ul>
+		        </div>
+	        </div>
+
+	        <!-- 主内容区 -->
+	        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	          <h4 class="page-header">
+	          	<div class="row">
+	          		<div role="button" class="col-xs-4 text-center">
+	          			综合排序
+	          			<span class="glyphicon glyphicon-menu-down fs20"></span>
+	          		</div>
+	          		<div role="button" class="col-xs-4 text-center">
+	          			性价比
+	          			<span class="glyphicon glyphicon-menu-down fs20 hide"></span>
+	          		</div>
+	          		<div role="button" class="col-xs-4 text-center">
+	          			市场占比
+	          			<span class="glyphicon glyphicon-menu-down fs20 hide"></span>
+	          		</div>
+	          	</div>
+	          </h4>
+
+	          <div class="row placeholders">
+	            <div class="col-xs-6 col-sm-3 placeholder" v-for="(row,index) in systems" v-show="row.show">
+	              <img role="button" :src="row.url" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail" />
+	              <h4>{{row.name}}</h4>
+	              <span role="button" class="text-muted" @click="open(row.link)">{{row.link}}</span>
+	            </div>
+	          </div>
+
+	        </div>
+	      </div>
+	    </div>
+
+</div>
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+	    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <script src="./index.js"></script>
+	 
+	  </body>
+	</html>

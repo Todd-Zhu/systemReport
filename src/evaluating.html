@@ -1,0 +1,166 @@
+	<!DOCTYPE html>
+	<html lang="zh-CN">
+	  <head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="./src/resource/img/favicon.ico">
+
+	    <title>餐饮资讯平台</title>
+
+	    <!-- Bootstrap core CSS -->
+	    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- Custom styles for this template -->
+	    <link href="./index.css" rel="stylesheet">
+	    <style>
+		    .row{
+		    	margin-top:30px;	
+		    }
+		    .color-b{
+		    	width: 91%!important;
+		    	color: black!important;
+		    	background: rgba(221, 221, 221, 0.46)!important;
+		    }
+	    	.movie{
+	    		cursor: pointer;
+	    	}
+	    	.movie img{
+	    		width: 100%;
+	    		height: 280px
+	    	}
+	    	.movieTitle{
+    		    position: absolute;
+			    bottom: 0px;
+			    width: 100%;
+			    color: #FFFFFF;
+			    background: rgba(255, 255, 255, 0.2);
+			    height: 40px;
+			    line-height: 40px;
+			    text-indent: 20px;
+	    	}
+	    </style>
+	  </head>
+
+	  <body>
+
+	    <nav class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container-fluid">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="./index1.html"><span class="youjian">友荐</span>&nbsp;&nbsp;|&nbsp;&nbsp;餐饮资讯平台</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav navbar-right">
+	            <li><a href="./index.html">产品列表</a></li>
+	            <li><a href="#" style="color: #337dbb;">专题评测</a></li>
+	            <li><a href="./service.html">咨询服务</a></li>
+	          </ul>
+	          <form class="navbar-form navbar-right">
+	            <input id="key" type="text" class="form-control" placeholder="请输入关键字...">
+	          </form>
+	        </div>
+	      </div>
+	    </nav>
+
+	    <div class="container">
+	      <div class="row">
+	        <!-- 主内容区 -->
+	        <div class="col-sm-8 movie" data-ele="#myModal">
+	        	<img src="./video/movie1.png" alt="">
+	        	<div class="movieTitle">
+	        		【客如云】On POS 深度评测
+	        	</div>
+	        </div>
+
+	        <div class="col-sm-4 movie" data-ele="#myModal1">
+	        	<img src="./video/movie2.png" alt="">
+	        	<div class="movieTitle color-b">
+	        		【客如云】云供应链 使用体验
+	        	</div>
+	        </div>
+	      </div>
+
+	      <div class="row">
+	        <!-- 主内容区 -->
+	        <div class="col-sm-4 movie">
+	        	<img src="./video/movie3.png" alt="">
+	        	<div class="movieTitle color-b">
+	        		【二维火】招财版收银机 使用体验
+	        	</div>
+	        </div>
+
+	        <div class="col-sm-4 movie">
+	        	<img src="./video/movie4.jpg" alt="">
+	        	<div class="movieTitle color-b">
+	        		【客如云】营销新玩法
+	        	</div>
+	        </div>
+
+	        <div class="col-sm-4 movie">
+	        	<img src="./video/movie5.jpg" alt="">
+	        	<div class="movieTitle color-b">
+	        		【三千客】收银系统评测
+	        	</div>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document" style="width: 670px;">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		       
+		      </div>
+		      <div style="background: black;" class="modal-body">
+		        <video id="video" width="640" height="500" controls="controls" loop="loop">
+					<source src="./video/movie1.mp4" type="video/mp4"> 您的浏览器不支持,请使用谷歌浏览器.
+				</video>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div id="myModal1" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog" role="document" style="width: 670px;">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		       
+		      </div>
+		      <div class="modal-body">
+		        <video id="video" width="640" height="400" controls="controls" loop="loop">
+					<source src="./video/movie2.mov" type="video/mp4"> 您的浏览器不支持,请使用谷歌浏览器.
+				</video>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			$('.movie').on('click',function(){
+				$($(this).data('ele')).modal('show');
+			});
+			$('#myModal').on('hide.bs.modal',function(e){
+				$('video').trigger('pause');
+			});
+			$('#myModal1').on('hide.bs.modal',function(e){
+				$('video').trigger('pause');
+			});
+		</script>
+	  </body>
+	</html>
